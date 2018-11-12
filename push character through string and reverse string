@@ -1,0 +1,113 @@
+#import tkinter # That works, if needed.
+print("start")
+
+def pushtoright(fullstring, whattopush):
+	# This takes a given string and a letter within to push to the right end. It then does so and
+	# and returns the string with the characters pushed to the right end.
+	howmanyofthem = 0
+	lengthall = len(fullstring)
+	oneless = lengthall - 1 # This provides the Python index maximum.
+	# The following might not be necessary. It might be possible to work with the string that is
+	# not an array.
+	textarray = []
+	i = 0
+	while i < lengthall:
+		textarray.append(fullstring[i])
+		if fullstring[i] == whattopush:
+			howmanyofthem = howmanyofthem + 1
+			# That counts how many there are. It's useful but not necessary.
+		i = i + 1
+	# We'll use a countdown while loop, checking from the right edge to the left edge.
+	i = oneless
+	while i > 0:
+		j = oneless
+		while j > 0:
+			# Go through the array from right to left, checking to see if something should be
+			# pushed to the right. If it is, switch it with the one that is not to be pushed.
+			# Then continue checking and switching them. Each j loop will move the
+			# character to be pushed one to the right. We'll need to repeat this loop
+			# oneless times to make sure that if a character needs to be pushed from all the
+			# way on the left, it will be pushed all the way. That loop repetition is done using
+			# the i loop. (This is is inefficient, like a bubble sort, but it works.)
+			if textarray[j] != whattopush and textarray[j - 1] == whattopush:
+				# That's the only time it has to be pushed. If textarray[j] is the letter to be
+				# pushed, it's already in the position it might have been switched to, so no
+				# further action is necessary -- go to the next part of the loop. If both
+				# textarray[j] and textarray[j - 1] are not to be pushed, again, go to the
+				# next part of the loop because no further action is necessary. Only if
+				# textarray[j - 1] is to be pushed and textarray[j] is not to be pushed should
+				# the values be switched (thereby shifting the character to be pushed one
+				# space to the right). The following switches them.
+				textarray[j - 1] = textarray[j]
+				textarray[j] = whattopush			
+			j = j - 1
+		i = i - 1
+	print("There are " + str(howmanyofthem) + ".") # Again, useful but not necessary.
+	finishedtext = "".join(textarray)
+	return finishedtext
+
+def pushtoleft(fullstring, whattopush):
+	# See above, but this pushes the character to the left.
+	howmanyofthem = 0
+	lengthall = len(fullstring)
+	oneless = lengthall - 1 # This provides the Python index maximum.
+	# The following might not be necessary. It might be possible to work with the string that is
+	# not an array.
+	textarray = []
+	i = 0
+	while i < lengthall:
+		textarray.append(fullstring[i])
+		if fullstring[i] == whattopush:
+			howmanyofthem = howmanyofthem + 1
+			# That counts how many there are. It's useful but not necessary.
+		i = i + 1
+	i = 0
+	while i < oneless:
+		j = 0
+		while j < oneless:
+			if textarray[j] != whattopush and textarray[j + 1] == whattopush:
+				textarray[j + 1] = textarray[j]
+				textarray[j] = whattopush			
+			j = j + 1
+		i = i + 1
+	print("There are " + str(howmanyofthem) + ".") # Again, useful but not necessary.
+	finishedtext = "".join(textarray)
+	return finishedtext
+
+def reverse(forward):
+	# A simple way to reverse a string.
+	length = len(forward)
+	oneless = length - 1
+	reverse = []
+	# This uses a countdown.
+	i = oneless
+	while i > -1:
+		reverse.append(forward[i])
+		i = i - 1
+	reverse = "".join(reverse)
+	return reverse
+
+str1 = "eWhen in the course of human eventse"
+pushoff = "r"
+print(str1)
+print("with " + pushoff + " to be pushed off.")
+# Push one or more of the letters to the end. Try e.
+newstring = pushtoright(str1, pushoff)
+print(newstring)
+
+newstring = pushtoleft(str1, pushoff)
+print(newstring)
+# Revese it.
+newstring2 = reverse(newstring)
+print(newstring2)
+
+#info = file1.read()
+#print(info)
+
+#firstline = file1.readline()
+#print(firstline)
+
+#data1 = file1.readlines()
+
+
+print ("end")
