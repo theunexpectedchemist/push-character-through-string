@@ -1,0 +1,17 @@
+def reverse(forward):
+	# A simple way to reverse a string.
+	length = len(forward)
+	oneless = length - 1
+	reverse = []
+	# This uses a countdown.
+	i = oneless
+	while i > -1:
+		reverse.append(forward[i])
+		i = i - 1
+	reverse = "".join(reverse)
+	return reverse
+  
+str1 = "When in the course of human events"
+# Revese it.
+newstring2 = reverse(str1)
+print(newstring2)
