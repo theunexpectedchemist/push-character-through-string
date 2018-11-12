@@ -1,6 +1,3 @@
-#import tkinter # That works, if needed.
-print("start")
-
 def pushtoright(fullstring, whattopush):
 	# This takes a given string and a letter within to push to the right end. It then does so and
 	# and returns the string with the characters pushed to the right end.
@@ -74,40 +71,13 @@ def pushtoleft(fullstring, whattopush):
 	finishedtext = "".join(textarray)
 	return finishedtext
 
-def reverse(forward):
-	# A simple way to reverse a string.
-	length = len(forward)
-	oneless = length - 1
-	reverse = []
-	# This uses a countdown.
-	i = oneless
-	while i > -1:
-		reverse.append(forward[i])
-		i = i - 1
-	reverse = "".join(reverse)
-	return reverse
-
 str1 = "eWhen in the course of human eventse"
 pushoff = "r"
 print(str1)
 print("with " + pushoff + " to be pushed off.")
-# Push one or more of the letters to the end. Try e.
+# Push one or more of the letters to the end.
 newstring = pushtoright(str1, pushoff)
 print(newstring)
 
 newstring = pushtoleft(str1, pushoff)
 print(newstring)
-# Revese it.
-newstring2 = reverse(newstring)
-print(newstring2)
-
-#info = file1.read()
-#print(info)
-
-#firstline = file1.readline()
-#print(firstline)
-
-#data1 = file1.readlines()
-
-
-print ("end")
